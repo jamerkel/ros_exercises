@@ -5,7 +5,7 @@ from std_msgs.msg import Float32
 
 def simple_publisher():
     pub = rospy.Publisher('my_random_float', Float32, queue_size=20)
-    rospy.init_node('simple_publisher', anonymous=True)
+    rospy.init_node('simple_publisher')
     r = rospy.Rate(20)
     while not rospy.is_shutdown():
         random_float = random.uniform(0,10)
