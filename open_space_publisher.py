@@ -19,10 +19,14 @@ def return_OpenSpace(data):
     space.distance = os_distance
     rospy.loginfo(space)
 
+    pub.publish(space)
+
 def return_distance(data):
     pub1 = rospy.Publisher('open_space/distance', Float32, queue_size=20)
     distance = max(data.ranges)
     rospy.loginfo(distance)
+
+    pub1.publish(distance)
 
 def return_angle(data):
     pub2 = rospy.Publisher('open_space/angle', Float32, queue_size=20)
@@ -34,6 +38,8 @@ def return_angle(data):
             angle = angle_count
             break
     rospy.loginfo(angle)
+
+    pub2.publish(angle)
 def open_space_publisher():
     rospy.init_node('open_space_publisher')
 
